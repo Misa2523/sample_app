@@ -29,7 +29,16 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])  #findメソッド：引数を受け取り、idカラムを引数と比べてレコードを取得する
   end
 
-  def edit
+  #editアクションで編集画面を表示
+  def edit  #「edit.html.erb」とリンクしてる
+    @list = List.find(params[:id])
+  end
+
+  #updateアクションで更新機能を追加
+  def update
+    list = List.find(params[:id]) #list：ローカル変数のため@はつけない
+    list.update(list_params)
+    redirect_to list_path(list.id)  #showアクションにリダイレクト（引数にはidが必要）
   end
 
   private   #一種の境界線（ここから下はこのcontrollerの中でしか呼び出せない）
