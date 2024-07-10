@@ -5,7 +5,7 @@
 
 <!-- form_withを利用すると、インスタンス変数を渡すだけで、
       インスタンス変数内のモデルを解読して、投稿したタイトルと内容を代入する-->
-<%= form_with model: @list, url: update_list_path(@list.id), method: :patch do |f| %>   <!-- @～はインスタンス変数 -->
+<%= form_with model: @list do |f| %>   <!-- @～はインスタンス変数 -->
 
   <h4>タイトル</h4>
   <%= f.text_field :title %>

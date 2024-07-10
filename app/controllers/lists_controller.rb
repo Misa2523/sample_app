@@ -41,6 +41,13 @@ class ListsController < ApplicationController
     redirect_to list_path(list.id)  #showアクションにリダイレクト（引数にはidが必要）
   end
 
+  #destroyアクションで投稿の削除機能を追加
+  def destroy
+    list = List.find(params[:id])  # データ（レコード）を1件取得
+    list.destroy  # データ（レコード）を削除
+    redirect_to '/lists'  # 投稿一覧画面へリダイレクト
+  end
+
   private   #一種の境界線（ここから下はこのcontrollerの中でしか呼び出せない）
   # ストロングパラメータ（マスアサインメント脆弱性を防ぐ仕組み）
   def list_params   #モデル名_params
