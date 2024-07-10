@@ -1,2 +1,12 @@
-<h1>Lists#index</h1>
-<p>Find me in app/views/lists/index.html.erb</p>
+<!--ビュー：ページの「見た目」を作るためのファイル-->
+
+<h1>投稿一覧</h1>
+
+<!-- form_with部分 -->
+<% @lists.each do |list| %>   <!--list：ブロック変数、@lists.each：Listレコードの数だけ繰り返し処理を行う（each分には%=の=は不要）-->
+
+  <p>タイトル</p>
+
+  <span><%= list.title %></span>    <!--list.[カラム名]でレコードのカラムの内容を表示-->
+
+<% end %>
