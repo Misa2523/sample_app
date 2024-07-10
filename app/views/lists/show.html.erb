@@ -10,13 +10,7 @@
 <p><%= @list.body %></p>
 
 <h2>画像</h2>
-<% if @list.image.attached? %>  <!--imageがあればimageを表示（attached?は、画像が存在すればtrue、なければfalseを返す）-->
-  <%= image_tag @list.image, size: "300x300" %>  <!--@listに紐ついているimageをimage_tagに渡すことで画像を表示できる-->
-
-<% else %>  <!--imageがなければ用意していたno_imageを表示-->
-  <%= image_tag 'no_image', size: "300x300" %>
-
-<% end %>
+<%= image_tag @list.image, size: "300x300" %>  <!--@listに紐ついているimageをimage_tagに渡すことで画像を表示できる-->
 
  <!--編集画面(edit.html.erb)に遷移するリンクを設定-->
 <%= link_to "編集", edit_list_path(@list.id) %>

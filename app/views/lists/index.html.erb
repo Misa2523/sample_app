@@ -15,13 +15,7 @@
   </span>
 
   <p>画像</p>
-  <% if list.image.attached? %>  <!--imageがあればimageを表示（attached?は、画像が存在すればtrue、なければfalseを返す）-->
-    <%= image_tag list.image, size: "200x200" %> <!--listに紐ついているimageをimage_tagに渡すことで画像を表示できる-->
+  <%= image_tag list.image, size: "200x200" %> <!--listに紐ついているimageをimage_tagに渡すことで画像を表示できる-->
   <!--↑オプションでsizeを指定すると、画像サイズを変更できる-->
-
-  <% else %>  <!--imageがなければ用意していたno_imageを表示-->
-     <%= image_tag 'no_image', size: "200x200" %>
-
-  <% end %>
 
 <% end %>

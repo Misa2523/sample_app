@@ -2,6 +2,18 @@
 
 <h1>新規投稿</h1>
 
+<!-- バリデーションが行われ、エラーになった場合の内容を表示 -->
+<!--errors：モデルにバリデーションをかけたときに、発生したエラーの内容を確認できるメソッド-->
+<% if @list.errors.any? %>  <!--errorsをany?と組み合わせるとエラー発生の有無を判定できる-->
+  <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <!--errorsをfull_messagesと組み合わせるとエラー内容を出力-->
+    <% @list.errors.full_messages.each do |message| %>  <!--エラー文は配列で保存されているため、eachを使う-->
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <!-- form_with部分 -->
 <%= form_with model: @list, url: '/lists', method: :post do |f| %>   <!--f：ブロック変数-->
 

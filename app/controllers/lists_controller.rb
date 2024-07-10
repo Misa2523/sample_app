@@ -12,11 +12,14 @@ class ListsController < ApplicationController
   #createアクションで投稿を保存する
   def create
     # 1.&2. データを受け取り新規登録するためのインスタンス作成
-    list = List.new(list_params)  #アクション内でのみ利用するためローカル変数listを使用
+    @list = List.new(list_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    list.save
-    # 4.詳細画面（show.html.erb）へリダイレクト（投稿内容をすぐ閲覧できるようにする）
-    redirect_to list_path(list.id)  #引数の(list.id)を忘れず記述！
+    if @list.save   #データが入力されていればsaveメソッドでtrueを返す
+      # 4.詳細画面（show.html.erb）へリダイレクト（投稿内容をすぐ閲覧できるようにする）
+      redirect_to list_path(@list.id)  #引数の(list.id)を忘れず記述！
+    else    #データが入力されていなければ、saveメソッドでfalseを返す
+      render :new   #render :アクション名 で、同じコントローラ内の別アクションのViewを表示
+    end
   end
 
   #indexアクションで一覧画面を表示
