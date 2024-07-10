@@ -9,7 +9,7 @@ class ListsController < ApplicationController
     @list = List.new
   end
 
-  #createアクションで投稿を保存する
+  #createアクションで投稿を保存
   def create
     # 1.&2. データを受け取り新規登録するためのインスタンス作成
     @list = List.new(list_params)
