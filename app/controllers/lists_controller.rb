@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   #見つけ出す役割を担っている。
 
   #newアクションで投稿フォームのあるページを表示
-  def new #「new.html.erbとリンクしてる」
+  def new #「new.html.erb」とリンクしてる
     # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成
     @list = List.new
   end
@@ -15,16 +15,18 @@ class ListsController < ApplicationController
     list = List.new(list_params)  #アクション内でのみ利用するためローカル変数listを使用
     # 3. データをデータベースに保存するためのsaveメソッド実行
     list.save
-    # 4.トップ画面へリダイレクト
-    redirect_to '/top'
+    # 4.詳細画面（show.html.erb）へリダイレクト（投稿内容をすぐ閲覧できるようにする）
+    redirect_to list_path(list.id)  #引数の(list.id)を忘れず記述！
   end
 
   #indexアクションで一覧画面を表示
-  def index #「index.html.erbとリンクしてる」
-    @lists = List.all   #投稿したList全て表示させるため全てのデータを取得（allはメソッドの一種）
+  def index #「index.html.erb」とリンクしてる
+    @lists = List.all   #allメソッド：存在するレコードすべて取得（投稿したList全て表示させるため全てのデータを取得）
   end
 
-  def show
+  #showアクションで詳細画面を表示
+  def show  #「show.html.erb」とリンクしてる
+    @list = List.find(params[:id])  #findメソッド：引数を受け取り、idカラムを引数と比べてレコードを取得する
   end
 
   def edit

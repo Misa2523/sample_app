@@ -7,6 +7,10 @@
 
   <p>タイトル</p>
 
-  <span><%= list.title %></span>    <!--list.[カラム名]でレコードのカラムの内容を表示-->
+  <span>
+    <!-- 一覧画面から詳細画面へ遷移するリンクの設定 -->
+    <%= link_to list.title, list_path(list.id) %>   <!--link_toメソッド：HTMLの要素を出力するメソッド-->
+    <!-- link_to "表示させるテキスト" , "リンク先URL" [,オプション] -->
+  </span>
 
 <% end %>

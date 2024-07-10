@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #コントローラにフォームのデータを送信するときはpostを使用
   post 'lists' => 'lists#create'    #'コントローラ名#アクション名'
   get 'lists' => 'lists#index'
-  get 'lists/:id' => 'lists#show'   #.../lists/1 や .../lists/3 に該当
+  get 'lists/:id' => 'lists#show', as: 'list'   #.../lists/1 や .../lists/3 に該当    #as:オプションで名前付きルートにする（'lists#show'の設定を、listとして利用できる）
   get 'lists/edit'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
