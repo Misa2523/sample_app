@@ -1,21 +1,25 @@
 <!--ビュー：ページの「見た目」を作るためのファイル-->
 <!-- 一覧画面 -->
 
-<h1>投稿一覧</h1>
-
+<div class="list-wrap">
 <!-- form_with部分 -->
 <% @lists.each do |list| %>   <!--list：ブロック変数、@lists.each：Listレコードの数だけ繰り返し処理を行う（each分には%=の=は不要）-->
 
-  <p>タイトル</p>
-
-  <span>
-    <!-- 一覧画面から詳細画面へ遷移するリンクの設定 -->
-    <%= link_to list.title, list_path(list.id) %>   <!--link_toメソッド：HTMLの要素を出力するメソッド-->
-    <!-- link_to "表示させるテキスト" , "リンク先URL" [,オプション] -->
-  </span>
-
-  <p>画像</p>
-  <%= image_tag list.image, size: "200x200" %> <!--listに紐ついているimageをimage_tagに渡すことで画像を表示できる-->
-  <!--↑オプションでsizeを指定すると、画像サイズを変更できる-->
+  <div class="list-box">
+    <% if list.image.attached? %>
+      <%= image_tag list.image, size: "200x200" %> <!--listに紐ついているimageをimage_tagに渡すことで画像を表示できる-->
+      <!--↑オプションでsizeを指定すると、画像サイズを変更できる-->
+    <% else %>
+      <%= image_tag 'no_image', size: "200x200" %>
+    <% end %>
+    <div>
+      <!-- Listモデルのbodyカラムに入ってるデータの呼び出し -->
+      <span class="list-body"><%= list.body %></span>
+      <!-- 一覧画面から詳細画面へ遷移するリンクの設定 -->
+      <span class="list-title"><%= link_to list.title, list_path(list.id) %></span>  <!--link_toメソッド：HTMLの要素を出力するメソッド-->
+      <!-- link_to "表示させるテキスト" , "リンク先URL" [,オプション] -->
+    </div>
+  </div>
 
 <% end %>
+</div>

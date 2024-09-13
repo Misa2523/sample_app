@@ -13,3 +13,99 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*外部webサイトから読み込んだフォントの呼び出し*/
+header, h1, nav, .list-comment {
+  font-family: 'Kaushan', cursive, sans-serif;
+}
+
+
+header {
+  width: 90%;
+  padding: 15px 0;
+  margin: 30px auto 0;
+  text-align: center;
+  border-top: solid 5px #000000;
+}
+
+header .headline {
+  font-size: 32px;
+}
+
+nav {
+  width: 880px;
+  margin: 0 auto;
+  border-top: solid 0.7px #000000;
+  border-bottom: solid 0.7px #000000;
+}
+
+.nav-list {
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+main {
+  width: 880px;
+  margin: 0 auto;
+}
+
+.list-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list-box {
+  width: 200px;
+  height: 250px;
+  margin: 10px;
+
+  /*配置の調整*/
+  position: relative;  /*親要素*/
+}
+
+.list-comment {
+  width: 200px;
+
+  /*配置の調整*/
+  position: absolute;  /*親要素の範囲内で子要素の位置を指定*/
+  left: 0;
+  bottom: 0;
+}
+
+.list-body {
+  /*コメントの長さ問わずレイアウトを整える*/
+  display: block;
+
+  color: gray;
+  font-size: 12px;
+
+  /*コメントの長さ問わずレイアウトを整える*/
+  overflow: hidden;
+  white-space: nowrap;  /*テキストを繰り返し表示させない*/
+  text-overflow: ellipsis;  /*領域をはみ出したテキストを(...)で省略表示する*/
+}
+
+.list-title {
+  /*コメントの長さ問わずレイアウトを整える*/
+  display: block;
+
+  font-size: 18px;
+
+  /*コメントの長さ問わずレイアウトを整える*/
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

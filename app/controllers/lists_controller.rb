@@ -53,7 +53,7 @@ class ListsController < ApplicationController
 
   private   #一種の境界線（ここから下はこのcontrollerの中でしか呼び出せない）
   # ストロングパラメータ（マスアサインメント脆弱性を防ぐ仕組み）
-  def list_params   #モデル名_params
+  def list_params  #モデル名_params
     params.require(:list).permit(:title, :body, :image)  #保存するカラムを限定
   end
 end
